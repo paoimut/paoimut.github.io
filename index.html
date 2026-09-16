@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toko Online Saya</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+}
+
+header{
+    background:#25D366;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:20px 0;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.card-body{
+    padding:15px;
+}
+
+.product-title{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.price{
+    color:#25D366;
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.desc{
+    color:#666;
+    margin-bottom:15px;
+}
+
+.qty-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.qty-box input{
+    width:70px;
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.btn{
+    width:100%;
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.btn:hover{
+    background:#1da851;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#777;
+}
+
+@media(max-width:768px){
+    .card img{
+        height:200px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Toko Online Saya</h1>
+    <p>Order langsung via WhatsApp</p>
+</header>
+
+<div class="container">
+
+<div class="products">
+
+    <!-- PRODUK 1 -->
+    <div class="card">
+        https://mapcoid-my.sharepoint.com/:i:/r/personal/heri_susanto01_map_co_id/Documents/Pictures/ITSSA.png?d=w0b898fc99176467a829bb62a80f60bed&csf=1&web=1&e=Q8ztSE
+        
+        <div class="card-body">
+            <div class="product-title">Jam Tangan Premium</div>
+
+            <div class="price">Rp 250.000</div>
+
+            <div class="desc">
+                Jam tangan premium dengan kualitas terbaik.
+            </div>
+
+            <div class="qty-box">
+                Jumlah:
+                <input type="number" min="1" value="1" id="qty1">
+            </div>
+
+            <button class="btn"
+                onclick="orderProduk(
+                'Jam Tangan Premium',
+                250000,
+                document.getElementById('qty1').value)">
+                Pesan Sekarang
+            </button>
+        </div>
+    </div>
+
+    <!-- PRODUK 2 -->
+    <div class="card">
+        https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800
+
+        <div class="card-body">
+            <div class="product-title">Sepatu Casual</div>
+
+            <div class="price">Rp 375.000</div>
+
+            <div class="desc">
+                Sepatu casual nyaman untuk aktivitas harian.
+            </div>
+
+            <div class="qty-box">
+                Jumlah:
+                <input type="number" min="1" value="1" id="qty2">
+            </div>
+
+            <button class="btn"
+                onclick="orderProduk(
+                'Sepatu Casual',
+                375000,
+                document.getElementById('qty2').value)">
+                Pesan Sekarang
+            </button>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Toko Online Saya
+</footer>
+
+<script>
+
+const nomorWA = "6285119888156"; // GANTI NOMOR ANDA
+
+function formatRupiah(angka){
+    return new Intl.NumberFormat('id-ID').format(angka);
+}
+
+function orderProduk(nama,harga,qty){
+
+    let total = harga * qty;
+
+    let pesan =
+`Halo Admin,
+
+Saya ingin memesan:
+
+📦 Produk : ${nama}
+🔢 Jumlah : ${qty}
+💰 Harga : Rp ${formatRupiah(harga)}
+🧾 Total : Rp ${formatRupiah(total)}
+
+Mohon info ketersediaannya. Terima kasih.`;
+
+    let url =
+`https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+
+    window.open(url,'_blank');
+}
+
+</script>
+
+</body>
+</html>
