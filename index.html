@@ -33,7 +33,7 @@ header{
 
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:20px;
 }
 
@@ -85,7 +85,7 @@ header{
 }
 
 .qty-box input{
-    width:70px;
+    width:80px;
     padding:8px;
     border:1px solid #ccc;
     border-radius:5px;
@@ -132,12 +132,18 @@ footer{
 
     <!-- PRODUK 1 -->
     <div class="card">
-        https://mapcoid-my.sharepoint.com/:i:/r/personal/heri_susanto01_map_co_id/Documents/Pictures/ITSSA.png?d=w0b898fc99176467a829bb62a80f60bed&csf=1&web=1&e=Q8ztSE
-        
-        <div class="card-body">
-            <div class="product-title">Jam Tangan Premium</div>
 
-            <div class="price">Rp 250.000</div>
+        <!-- GANTI DENGAN GAMBAR ANDA -->
+        image/logo.png
+
+        <div class="card-body">
+            <div class="product-title">
+                Jam Tangan Premium
+            </div>
+
+            <div class="price">
+                Rp 250.000
+            </div>
 
             <div class="desc">
                 Jam tangan premium dengan kualitas terbaik.
@@ -148,24 +154,35 @@ footer{
                 <input type="number" min="1" value="1" id="qty1">
             </div>
 
-            <button class="btn"
+            <button
+                class="btn"
                 onclick="orderProduk(
-                'Jam Tangan Premium',
-                250000,
-                document.getElementById('qty1').value)">
+                    'Jam Tangan Premium',
+                    250000,
+                    document.getElementById('qty1').value
+                )">
                 Pesan Sekarang
             </button>
         </div>
+
     </div>
 
     <!-- PRODUK 2 -->
     <div class="card">
-        https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800
+
+        <img
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800"
+            alt="Sepatu Casual">
 
         <div class="card-body">
-            <div class="product-title">Sepatu Casual</div>
 
-            <div class="price">Rp 375.000</div>
+            <div class="product-title">
+                Sepatu Casual
+            </div>
+
+            <div class="price">
+                Rp 375.000
+            </div>
 
             <div class="desc">
                 Sepatu casual nyaman untuk aktivitas harian.
@@ -176,13 +193,16 @@ footer{
                 <input type="number" min="1" value="1" id="qty2">
             </div>
 
-            <button class="btn"
+            <button
+                class="btn"
                 onclick="orderProduk(
-                'Sepatu Casual',
-                375000,
-                document.getElementById('qty2').value)">
+                    'Sepatu Casual',
+                    375000,
+                    document.getElementById('qty2').value
+                )">
                 Pesan Sekarang
             </button>
+
         </div>
     </div>
 
@@ -191,12 +211,12 @@ footer{
 </div>
 
 <footer>
-© 2026 Toko Online Saya
+    © 2026 Toko Online Saya
 </footer>
 
 <script>
 
-const nomorWA = "6285119888156"; // GANTI NOMOR ANDA
+const nomorWA = "6285119888156";
 
 function formatRupiah(angka){
     return new Intl.NumberFormat('id-ID').format(angka);
@@ -216,12 +236,13 @@ Saya ingin memesan:
 💰 Harga : Rp ${formatRupiah(harga)}
 🧾 Total : Rp ${formatRupiah(total)}
 
-Mohon info ketersediaannya. Terima kasih.`;
+Mohon info ketersediaannya.
+Terima kasih.`;
 
     let url =
 `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
 
-    window.open(url,'_blank');
+    window.open(url, '_blank');
 }
 
 </script>
