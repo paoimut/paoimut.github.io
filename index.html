@@ -10,101 +10,174 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:#f5f7fa;
+    background:#f7f8fc;
 }
 
+/* HEADER */
 header{
-    background:#25D366;
+    background:linear-gradient(135deg,#ff6ec7,#ff9a9e);
     color:white;
     text-align:center;
-    padding:20px;
+    padding:40px 20px;
 }
 
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-    padding:20px 0;
+header h1{
+    font-size:38px;
+    margin-bottom:10px;
 }
+
+header p{
+    opacity:0.95;
+}
+
+/* CONTAINER */
+
+.container{
+    width:95%;
+    max-width:1300px;
+    margin:auto;
+    padding:30px 0;
+}
+
+/* PRODUK */
 
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
 .card{
     background:white;
-    border-radius:15px;
+    border-radius:20px;
     overflow:hidden;
-    box-shadow:0 5px 15px rgba(0,0,0,.1);
     transition:.3s;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
 .card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-8px);
 }
 
 .card img{
     width:100%;
-    height:500px;
+    height:350px;
     object-fit:cover;
 }
 
 .card-body{
-    padding:15px;
+    padding:20px;
 }
 
 .product-title{
     font-size:20px;
-    font-weight:bold;
-    margin-bottom:10px;
+    font-weight:600;
 }
 
 .price{
-    color:#25D366;
-    font-size:24px;
-    font-weight:bold;
-    margin-bottom:10px;
+    margin-top:10px;
+    color:#ff4b91;
+    font-size:26px;
+    font-weight:700;
 }
 
 .desc{
-    color:#666;
-    margin-bottom:15px;
+    margin-top:10px;
+    color:#777;
+    line-height:1.5;
 }
 
 .qty-box{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:15px;
+    margin-top:15px;
 }
 
 .qty-box input{
     width:80px;
     padding:8px;
     border:1px solid #ccc;
-    border-radius:5px;
+    border-radius:8px;
 }
 
 .btn{
     width:100%;
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    padding:14px;
     background:#25D366;
     color:white;
-    border:none;
-    padding:12px;
-    border-radius:8px;
-    cursor:pointer;
     font-size:16px;
+    font-weight:600;
+    cursor:pointer;
 }
 
 .btn:hover{
-    background:#1da851;
+    background:#18b954;
 }
+
+.cart-container{
+    margin-top:40px;
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.cart-container h2{
+    margin-bottom:20px;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:12px;
+    background:#f8f9ff;
+    border:1px solid #e5e7eb;
+}
+
+.delete-btn{
+    border:none;
+    background:#ef4444;
+    color:white;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.delete-btn:hover{
+    background:#dc2626;
+}
+
+.total{
+    font-size:24px;
+    font-weight:700;
+    color:#25D366;
+    margin-top:20px;
+}
+
+.hero{
+    text-align:center;
+    padding:40px 20px;
+}
+
+.hero h2{
+    color:#ff4b91;
+    font-size:32px;
+}
+
+.hero p{
+    margin-top:10px;
+    color:#666;
+}
+
 
 footer{
     text-align:center;
@@ -114,7 +187,7 @@ footer{
 
 @media(max-width:768px){
     .card img{
-        height:500px;
+        height:280px;
     }
 }
 </style>
@@ -123,120 +196,253 @@ footer{
 
 <header>
     <h1>Pao Imut</h1>
-    <p>Sekarang bisa langsung order via WhatsApp</p>
+    <p>Sekarang Bisa Order Banyak Produk Sekaligus</p>
 </header>
 
 <div class="container">
 
-<div class="products">
+    <div class="products">
 
-    <!-- PRODUK 1 -->
-    <div class="card">
+        <!-- PRODUK 1 -->
+        <div class="card">
 
-        <!-- GANTI DENGAN GAMBAR ANDA -->
-        <img src="https://paoimut.github.io/image/hellokitty.jpeg"
+            <img src="https://paoimut.github.io/image/hellokitty.jpeg"
      alt="Hello Kitty">
 
-        <div class="card-body">
-            <div class="product-title">
-                Pao Character ( Hellokitty )
+            <div class="card-body">
+
+                <div class="product-title">
+                    Pao Character ( Hello Kitty )
+                </div>
+
+                <div class="price">
+                    Rp 18.000
+                </div>
+
+                <div class="desc">
+                    Pao Imut Character Hello Kitty.
+                </div>
+
+                <div class="qty-box">
+                    Jumlah :
+                    <input type="number"
+                           min="1"
+                           value="1"
+                           id="qty1">
+                </div>
+
+                <button
+                    class="btn"
+                    onclick="tambahKeranjang(
+                        'Pao Character ( Hello Kitty )',
+                        18000,
+                        document.getElementById('qty1').value
+                    )">
+                    Tambah ke Keranjang
+                </button>
+
             </div>
 
-            <div class="price">
-                Rp 18.000
+        </div>
+
+        <!-- PRODUK 2 -->
+        <div class="card">
+
+            <img src="https://paoimut.github.io/image/princes.jpeg"**    alt="Princess">
+
+            <div class="card-body">
+
+                <div class="product-title">
+                    Pao Character ( Princess )
+                </div>
+
+                <div class="price">
+                    Rp 18.000
+                </div>
+
+                <div class="desc">
+                    Pao Imut Character Princess.
+                </div>
+
+                <div class="qty-box">
+                    Jumlah :
+                    <input type="number"
+                           min="1"
+                           value="1"
+                           id="qty2">
+                </div>
+
+                <button
+                    class="btn"
+                    onclick="tambahKeranjang(
+                        'Pao Character ( Princess )',
+                        18000,
+                        document.getElementById('qty2').value
+                    )">
+                    Tambah ke Keranjang
+                </button>
+
             </div>
 
-            <div class="desc">
-                Pao imut Character ( Hellokitty )
-            </div>
-
-            <div class="qty-box">
-                Jumlah:
-                <input type="number" min="1" value="1" id="qty1">
-            </div>
-
-            <button
-                class="btn"
-                onclick="orderProduk(
-                    'Pao imut Character ( Hellokitty )',
-                    18000,
-                    document.getElementById('qty1').value
-                )">
-                Pesan Sekarang
-            </button>
         </div>
 
     </div>
 
-    <!-- PRODUK 2 -->
-    <div class="card">
+    <!-- KERANJANG -->
+    <div class="cart-container">
 
-        <img src="https://paoimut.github.io/image/princes.jpeg"
-     alt="Princes">
+        <h2>🛒 Keranjang Belanja</h2>
 
-        <div class="card-body">
+        <br>
 
-            <div class="product-title">
-                Pao Character ( Princess )
-            </div>
-
-            <div class="price">
-                Rp 18.000
-            </div>
-
-            <div class="desc">
-                Pao Character ( Princess )
-            </div>
-
-            <div class="qty-box">
-                Jumlah:
-                <input type="number" min="1" value="1" id="qty2">
-            </div>
-
-            <button
-                class="btn"
-                onclick="orderProduk(
-                    'Pao Character ( Princess )',
-                    18000,
-                    document.getElementById('qty2').value
-                )">
-                Pesan Sekarang
-            </button>
-
+        <div id="cart-list">
+            Keranjang masih kosong
         </div>
-    </div>
 
-</div>
+        <div class="total" id="grand-total">
+            Total : Rp 0
+        </div>
+
+        <button class="btn" onclick="checkoutWA()">
+            Checkout WhatsApp
+        </button>
+
+    </div>
 
 </div>
 
 <footer>
     © 2026 Pao Imut Character
     <br>
-    cp : 0851-9938-2682
+    CP : 0851-9938-2682
 </footer>
 
 <script>
 
 const nomorWA = "6285199382682";
 
+let keranjang = [];
+
 function formatRupiah(angka){
     return new Intl.NumberFormat('id-ID').format(angka);
 }
 
-function orderProduk(nama,harga,qty){
+function tambahKeranjang(nama,harga,qty){
 
-    let total = harga * qty;
+    qty = parseInt(qty);
+
+    keranjang.push({
+        nama:nama,
+        harga:harga,
+        qty:qty
+    });
+
+    renderKeranjang();
+
+    alert("Produk berhasil ditambahkan ke keranjang");
+}
+
+function hapusItem(index){
+
+    keranjang.splice(index,1);
+
+    renderKeranjang();
+}
+
+function renderKeranjang(){
+
+    let cartCount =
+        document.getElementById("cart-count");
+
+    if(cartCount){
+        cartCount.innerText = keranjang.length;
+    }
+
+    let cart =
+        document.getElementById("cart-list");
+
+    let grandTotal =
+        document.getElementById("grand-total");
+
+    if(keranjang.length === 0){
+
+        cart.innerHTML =
+        "Keranjang masih kosong";
+
+        grandTotal.innerHTML =
+        "Total : Rp 0";
+
+        return;
+    }
+
+    let html = "";
+    let total = 0;
+
+    keranjang.forEach((item,index)=>{
+
+        let subtotal =
+            item.harga * item.qty;
+
+        total += subtotal;
+
+        html += `
+        <div class="cart-item">
+            <div>
+                <b>${item.nama}</b><br>
+                Qty : ${item.qty}<br>
+                Subtotal :
+                Rp ${formatRupiah(subtotal)}
+            </div>
+
+            <button
+                class="delete-btn"
+                onclick="hapusItem(${index})">
+                Hapus
+            </button>
+        </div>
+        `;
+    });
+
+    cart.innerHTML = html;
+
+    grandTotal.innerHTML =
+    `Total : Rp ${formatRupiah(total)}`;
+}
+function checkoutWA(){
+
+    if(keranjang.length === 0){
+
+        alert("Keranjang masih kosong");
+
+        return;
+    }
 
     let pesan =
 `Halo Admin,
 
 Saya ingin memesan:
 
-📦 Produk : ${nama}
-🔢 Jumlah : ${qty}
-💰 Harga : Rp ${formatRupiah(harga)}
-🧾 Total : Rp ${formatRupiah(total)}
+`;
+
+    let totalSemua = 0;
+
+    keranjang.forEach(item => {
+
+        let subtotal =
+            item.harga * item.qty;
+
+        totalSemua += subtotal;
+
+        pesan +=
+`📦 ${item.nama}
+🔢 Qty : ${item.qty}
+💰 Rp ${formatRupiah(subtotal)}
+
+`;
+    });
+
+    pesan +=
+`🧾 TOTAL BELANJA : Rp ${formatRupiah(totalSemua)}
 
 Mohon info ketersediaannya.
 Terima kasih.`;
@@ -244,7 +450,7 @@ Terima kasih.`;
     let url =
 `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
 
-    window.open(url, '_blank');
+    window.open(url,'_blank');
 }
 
 </script>
